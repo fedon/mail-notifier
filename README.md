@@ -4,6 +4,8 @@ mail-notifier
 Usb mail notifier script for gmail
 
 I. Introduction
+Network calls are made by curl.
+Tested on Linux Fedora.
 Why to publish? First of all that is how open source works. I use this <a href="https://github.com/vogelchr/led-notify-module">module</a> to control my notifier device and this repo is my pay back.
 Another thing is gmail API is not so easy to start with as it may seem. Although, google has abundant documentation it is ill structured. There are lots of versions and when you read something it is not clear if it is the latest/actual version.
 
@@ -25,4 +27,4 @@ cd to directory with check-mail.sh and run it with
 You will be asked for ssh key pass three times if any. And one time your password for sudo. This means you have to be a valid sudoer.
 
 Known issue
-After resume the device is gone. I guess it is something with udev. It will be the next step. Work-around replug the device.
+After notebook sleep-resume the device is gone. I guess it is something with udev. It will be the next step. Work-around replug the device.
