@@ -25,7 +25,7 @@ if [ $status -ne 0 ]; then # session is OK
   errCount=0
   cat $resp | tr ":" " " | sudo awk ' /resultSizeEstimate/ {if ($2+0 > 0) system("./redOn.sh"); else system("./redOff.sh");fi}'; 
 else # response status 4xx refresh session is required
-  errCount=$errCount+1
+  errCount=$((errCount+1))
   # google states that refresh token has limited use count, so I prefer to keep it under visula control at least for now
   echo Call refresh;
   session=`./curl-refresh.sh $clientid $secret $rfkey`
@@ -40,7 +40,7 @@ if [ $status -ne 0 ]; then # session is OK
   errCount=0
   cat $resp | tr ":" " " | sudo awk ' /resultSizeEstimate/ {if ($2+0 > 0) system("./blueOn.sh"); else system("./blueOff.sh");fi}'; 
 else # response status 4xx refresh session is required
-  errCount=$errCount+1
+  errCount=$((errCount+1))
   echo Call refresh;
   session=`./curl-refresh.sh $clientid $secret $rfkey`
 fi;
@@ -54,7 +54,7 @@ if [ $status -ne 0 ]; then # session is OK
   errCount=0
   cat $resp | tr ":" " " | sudo awk ' /resultSizeEstimate/ {if ($2+0 > 0) system("./greenOn.sh"); else system("./greenOff.sh");fi}'; 
 else # response status 4xx refresh session is required
-  errCount=$errCount+1
+  errCount=$((errCount+1))
   echo Call refresh;
   session=`./curl-refresh.sh $clientid $secret $rfkey`
 fi;
