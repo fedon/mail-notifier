@@ -18,7 +18,7 @@ I have tested it for "installed application" type. Step by step <a href="https:/
   a) Be careful with scope. I use "scope=https://www.googleapis.com/auth/gmail.readonly". First of all if you play with scopes be aware their additivity is not trivial. So, if you want to change the scope you better to revoke previous permission first and reinit it from the very beginning.
   b) Even so, I have read-only permission I consider it to be a security risk. This far I use ssh key to encript and decript my cridentials. See comments in line. At the end of the day it is on you to decide which security strategy to follow.
 III. Usb device
-The last thing is to provide your notifier device path in color On/Off scripts. It should look similar to "6-2\:1.0".
+Device detection script in color On/Off scripts may not work properly in some usb configuration. In such case you may want to provide your notifier device path in color On/Off scripts. It should look similar to "6-2\:1.0".
 
 IV. Run
 cd to directory with check-mail.sh and run it with
@@ -27,4 +27,5 @@ cd to directory with check-mail.sh and run it with
 You will be asked for ssh key pass three times if any. And one time your password for sudo. This means you have to be a valid sudoer.
 
 Known issue
-After notebook sleep-resume the device is gone. I guess it is something with udev. It will be the next step. Work-around replug the device.
+After notebook sleep-resume the device is gone. I guess it is something with udev or hid. Work-around: replug the device.
+Or you may copy 99-usbled.sh to /etc/pm/sleep.d/99-usbled.sh so, it will run rebind script after resume. Device detection script may be not adequate in complex usb configuration.
